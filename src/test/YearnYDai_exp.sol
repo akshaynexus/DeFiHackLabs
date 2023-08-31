@@ -17,7 +17,6 @@ import "./interface.sol";
 
 // @Analysis
 // Post-mortem : https://github.com/yearn/yearn-security/blob/master/disclosures/2021-02-04.md
-// Twitter Guy : https://www.google.com/
 
 interface ICurve {
     function add_liquidity(uint256[3] memory amounts, uint256 min_mint_amount) external;
@@ -59,10 +58,6 @@ contract Exploit is Test {
     ];
     uint256 constant init_add_dai_amt = 37_972_761_178_915_525_047_091_200;
     uint256 constant init_add_usdc_amt = 133_000_000_000_000;
-
-    constructor() {
-        // Approvals and initialization logic goes here
-    }
 
     function writeTokenBalance(address who, address token, uint256 amt) internal {
         stdstore.target(token).sig(IERC20(token).balanceOf.selector).with_key(who).checked_write(amt);
