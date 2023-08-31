@@ -62,6 +62,8 @@
 
 [20210305 Paid Network](#20210305-paid-network---private-key-compromised)
 
+[20210204 Yearn yDai](#20210204-yearn-ydai---price-manipulation)
+
 [20201229 Cover Protocol](#20201229-cover-protocol)
 
 [20201121 Pickle Finance](#20201121-pickle-finance)
@@ -700,6 +702,26 @@ forge test --contracts ./src/test/PAID_exp.sol -vv
 https://paidnetwork.medium.com/paid-network-attack-postmortem-march-7-2021-9e4c0fef0e07
 
 https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0
+
+---
+
+### 20210204 Yearn YDai - Price manipulation
+
+#### Lost: ~$11 million
+
+Testing
+
+```sh
+forge test --contracts ./src/test/YearnYDai_exp.sol -vv
+```
+
+#### Contract
+
+[YearnYDai_exp.sol](../../src/test/YearnYDai_exp.sol)
+
+#### Link reference
+
+https://github.com/yearn/yearn-security/blob/master/disclosures/2021-02-04.md
 
 ---
 
