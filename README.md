@@ -2,7 +2,7 @@
 
 **Reproduce DeFi hack incidents using Foundry.**
 
-267 incidents included.
+271 incidents included.
 
 Let's make Web3 secure! Join [Discord](https://discord.gg/Fjyngakf3h)
 
@@ -34,7 +34,13 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ## List of Past DeFi Incidents
 
+[20230829 EAC](#20230829-eac---price-manipulation)
+
+[20230826 SVT](#20230826-svt---flawed-price-calculation)
+
 [20230824 GSS](#20230824-gss---skim-token-balance)
+
+[20230821 EHIVE](#20230821-ehive---business-logic-flaw)
 
 [20230818 ExactlyProtocol](#20230818-exactlyprotocol---insufficient-validation)
 
@@ -77,6 +83,8 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 [20230717 NewFi](#20230717-newfi---lack-slippage-protection)
 
 [20230712 Platypus](#20230712-platypus---bussiness-logic-flaw)
+
+[20230712 WGPT](#20230712-wgpt---business-logic-flaw)
 
 [20230711 RodeoFinance](#20230711-rodeofinance---twap-oracle-manipulation)
 
@@ -610,6 +618,46 @@ All articles are also published on [Substack](https://defihacklabs.substack.com/
 
 ### List of DeFi Hacks & POCs
 
+### 20230829 EAC - Price Manipulation
+
+### Lost: ~$29BNB
+
+Test
+
+```
+forge test --contracts ./src/test/EAC_exp.sol -vvv
+```
+
+#### Contract
+
+[EAC_exp.sol](src/test/EAC_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/bbbb/status/1696520866564350157
+
+---
+
+### 20230826 SVT - flawed price calculation
+
+### Lost: ~$400K
+
+Test
+
+```
+forge test --contracts ./src/test/SVT_exp.sol -vvv
+```
+
+#### Contract
+
+[SVT_exp.sol](src/test/SVT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1695285435671392504?s=20
+
+---
+
 ### 20230824 GSS - skim token balance
 
 ### Lost: ~$25K
@@ -627,6 +675,26 @@ forge test --contracts ./src/test/GSS_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/bbbb/status/1694571228185723099
+
+---
+
+### 20230821 EHIVE - Business Logic Flaw
+
+### Lost: ~$15K
+
+Test
+
+```
+forge test --contracts ./src/test/EHIVE_exp.sol -vvv
+```
+
+#### Contract
+
+[EHIVE_exp.sol](src/test/EHIVE_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/bulu4477/status/1693636187485872583
 
 ---
 
@@ -1067,6 +1135,28 @@ forge test --contracts ./src/test/Platypus02_exp.sol -vvv
 #### Link Reference
 
 https://twitter.com/peckshield/status/1678800450303164431
+
+---
+
+### 20230712 WGPT - Business Logic Flaw
+
+### Lost: ~$80k
+
+Testing
+
+```
+forge test --contracts ./src/test/WGPT_exp.sol -vvv
+```
+
+#### Contract
+
+[WGPT_exp.sol](src/test/WGPT_exp.sol)
+
+#### Link Reference
+
+https://twitter.com/Phalcon_xyz/status/1679042549946933248
+
+https://twitter.com/BeosinAlert/status/1679028240982368261
 
 ---
 
